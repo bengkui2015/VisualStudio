@@ -235,54 +235,73 @@
 //}
 
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<CoreWindow.h>
+//#include<stdio.h>
+//#include<stdlib.h>
+//#include<CoreWindow.h>
+//
+//
+//void open(char *str)
+//{
+//	ShellExecuteA(0, "open", str, 0, 0, 1);
+//
+//}
 
+//void close()
+//{
+//	system("taskkill /f /im firefox.exe");
+//}
+//
+//void input()
+//{
+//	keybd_event('F', 0, 0, 0);
+//	keybd_event('F', 0, 2, 0);
+//	Sleep(50);
+//	keybd_event('G', 0, 0, 0);
+//	keybd_event('G', 0, 2, 0);
+//	Sleep(50);
+//	keybd_event('1', 0, 0, 0);
+//	keybd_event('1', 0, 2, 0);
+//	Sleep(50);
+//	keybd_event(0x0D, 0, 0, 0);
+//	keybd_event(0x0D, 0, 2, 0);
+//	Sleep(50);
+//}
+//
+//void click()
+//{
+//	mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSE_MOVED, 300 * 65535 / 1920, 500 * 65535 / 1080,0,0);
+//	Sleep(50);
+//	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+//	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+//
+//}
+//void main()
+//{
+//	open("http://www.baidu.com");
+//	Sleep(10000);
+//	input();
+//	Sleep(5000);
+//	click();
+//	Sleep(5000);
+//	close();
+//
+//}
 
-void open(char *str)
+#include <stdio.h>
+#include "hotel.h"
+int main(void)
 {
-	ShellExecuteA(0, "open", str, 0, 0, 1);
+	int nights;
+	double hotel_rate;
+	int code;
+
+	while ((code = meni()) != QUIT)
+	{
+		switch (code)
+		{
+
+		}
+	}
 
 }
 
-void close()
-{
-	system("taskkill /f /im firefox.exe");
-}
-
-void input()
-{
-	keybd_event('F', 0, 0, 0);
-	keybd_event('F', 0, 2, 0);
-	Sleep(50);
-	keybd_event('G', 0, 0, 0);
-	keybd_event('G', 0, 2, 0);
-	Sleep(50);
-	keybd_event('1', 0, 0, 0);
-	keybd_event('1', 0, 2, 0);
-	Sleep(50);
-	keybd_event(0x0D, 0, 0, 0);
-	keybd_event(0x0D, 0, 2, 0);
-	Sleep(50);
-}
-
-void click()
-{
-	mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSE_MOVED, 300 * 65535 / 1920, 500 * 65535 / 1080,0,0);
-	Sleep(50);
-	mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-	mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-
-}
-void main()
-{
-	open("http://www.baidu.com");
-	Sleep(10000);
-	input();
-	Sleep(5000);
-	click();
-	Sleep(5000);
-	//close();
-
-}
