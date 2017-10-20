@@ -1,5 +1,4 @@
-////
-//
+/*字符长度比较*/
 //#include <stdio.h>
 //#include <string.h>
 //char *strlong(char *str1, char *str2) {
@@ -18,9 +17,9 @@
 //	printf("Longer string: %s\n", str);
 //	return 0;
 //}
-//
+
+/*分鱼递归函数*/
 //#include<stdio.h>
-///*分鱼递归函数*/
 //int fish(int n, int x)
 //{
 //	if ((x - 1) % 5 == 0)
@@ -48,6 +47,7 @@
 //	return 0;
 //}
 
+/*年龄计算*/
 //#include<stdio.h>
 //int age(int n)
 //{
@@ -67,8 +67,8 @@
 //	return 0;
 //}
 
-//
-//马踏棋盘
+
+/*马踏棋盘*/
 //#include <stdio.h>
 //#define X 8
 //#define Y 8
@@ -234,7 +234,7 @@
 //	return 0;
 //}
 
-
+/*自动搜索*/
 //#include<stdio.h>
 //#include<stdlib.h>
 //#include<CoreWindow.h>
@@ -245,7 +245,6 @@
 //	ShellExecuteA(0, "open", str, 0, 0, 1);
 //
 //}
-
 //void close()
 //{
 //	system("taskkill /f /im firefox.exe");
@@ -287,34 +286,55 @@
 //
 //}
 
-#include <stdio.h>
-#include "hotel.h"
+/*hotel.c hotel.h*/
+//#include <stdio.h>
+//#include "hotel.h"
+//int main(void)
+//{
+//	int nights;
+//	double hotel_rate;
+//	int code;
+//
+//	while ((code = menu()) != QUIT)
+//	{
+//		switch (code)
+//		{
+//		case 1:hotel_rate = HOTEL1;
+//			break;
+//		case 2:hotel_rate = HOTEL2;
+//			break;
+//		case 3:hotel_rate = HOTEL3;
+//			break;
+//		case 4:hotel_rate = HOTEL4;
+//			break;
+//		default:hotel_rate = 0.0;
+//			printf("Oops!\n");
+//			break;
+//		}
+//		nights = getnights();
+//		showprice(hotel_rate, nights);
+//	}
+//	printf("Thank you and goodbye.");
+//	return 0;
+//}
+
+/*超出数组边界*/
+#include<stdio.h>
+#define SIZE 4
 int main(void)
 {
-	int nights;
-	double hotel_rate;
-	int code;
+	int value1 = 44;
+	int arr[SIZE];
+	int value2 = 88;
+	int i;
 
-	while ((code = menu()) != QUIT)
-	{
-		switch (code)
-		{
-		case 1:hotel_rate = HOTEL1;
-			break;
-		case 2:hotel_rate = HOTEL2;
-			break;
-		case 3:hotel_rate = HOTEL3;
-			break;
-		case 4:hotel_rate = HOTEL4;
-			break;
-		default:hotel_rate = 0.0;
-			printf("Oops!\n");
-			break;
-		}
-		nights = getnights();
-		showprice(hotel_rate, nights);
-	}
-	printf("Thank you and goodbye.");
+	printf("value1 = %d, value2 = %d\n", value1, value2);
+	for (i = -1; i <= SIZE;i++)
+		arr[i] = 2 * i + 1;
+	for (i = -1;i < 7;i++)
+		printf("%2d %d\n", i, arr[i]);
+	printf("value1 = %d ,value2=%d\n", value1, value2);
+	
 	return 0;
 }
 
