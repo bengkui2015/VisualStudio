@@ -319,22 +319,109 @@
 //}
 
 /*超出数组边界*/
+//#include<stdio.h>
+//#define SIZE 4
+//int main(void)
+//{
+//	int value1 = 44;
+//	int arr[SIZE];
+//	int value2 = 88;
+//	int i;
+//
+//	printf("value1 = %d, value2 = %d\n", value1, value2);
+//	for (i = -1; i <= SIZE;i++)
+//		arr[i] = 2 * i + 1;
+//	for (i = -1;i < 7;i++)
+//		printf("%2d %d\n", i, arr[i]);
+//	printf("value1 = %d ,value2=%d\n", value1, value2);
+//	
+//	return 0;
+//}
+/*指针加法*/
+//#include <stdio.h>
+//#define SIZE 4
+//int main(void)
+//{
+//	short dates[SIZE];
+//	short *pti;
+//	short index;
+//	double bills[SIZE];
+//	double *ptf;
+//	pti = dates;
+//	ptf = bills;
+//	printf("%23s %10s\n", "short", "double");
+//	for (index = 0;index < SIZE;index++)
+//		printf("pointers + %d: %10p %10p\n", index, pti + index, ptf + index);
+//	
+//	return 0;
+//}
+/*使用指针符号*/
+//#include<stdio.h>
+//#define MONTHS 12
+//int main(void)
+//{
+//	int days[MONTHS] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
+//	int index;
+//
+//	for (index = 0;index < MONTHS;index++)
+//		printf("Month %2d has %d days.\n", index + 1, *(days + index));
+//
+//		return 0;
+//}
+
+/*指针运算的优先级*/
+//#include<stdio.h>
+//int data[2] = { 100,200 };
+//int moredata[2] = { 300,400 };
+//int main(void)
+//{
+//	int * p1, *p2, *p3;
+//	p1 = p2 = data;
+//	p3 = moredata;
+//	printf("*p1 = %d, *p2 = %d, *p3 = %d\n", *p1, *p2, *p3);
+//	printf("*p1++ = %d, *++p2 = %d, (*p3) ++ = %d\n", *p1++, *++p2, (*p3)++);
+//	printf("*p1 = %d, *p2 = %d, *p3 = %d\n", *p1, *p2, *p3);
+//	
+//	return 0;
+//
+//}
+
+/*指针操作*/
 #include<stdio.h>
-#define SIZE 4
 int main(void)
 {
-	int value1 = 44;
-	int arr[SIZE];
-	int value2 = 88;
-	int i;
+	int urn[5] = { 100, 200, 300, 400, 500 };
+	int * ptr1, *ptr2, *ptr3;
+	ptr1 = urn;
+	ptr2 = &urn[2];
+	printf("pointer value, dereferenced pointer, pointer adrress:\n");
+	printf("ptr1 = %p, *ptr1 = %d, &ptr1 = %p\n", ptr1, *ptr1, &ptr1);
 
-	printf("value1 = %d, value2 = %d\n", value1, value2);
-	for (i = -1; i <= SIZE;i++)
-		arr[i] = 2 * i + 1;
-	for (i = -1;i < 7;i++)
-		printf("%2d %d\n", i, arr[i]);
-	printf("value1 = %d ,value2=%d\n", value1, value2);
-	
+	ptr3 = ptr1 + 4;
+	printf("\nadding an int to a pointer:\n");
+	printf("ptr1 + 4 = %p, *(ptr1 + 3) = %d\n", ptr1 + 4, *(ptr1 + 3));
+
+	ptr1++;		//递增指针
+	printf("\nvalues after ptr1++\n");
+	printf("ptr1 = %p, *ptr1 = %d, &ptr1 = %p\n", ptr1, *ptr1, &ptr1);
+
+	ptr2--;		//递减指针
+	printf("\nvalues after ptr2--\n");
+	printf("ptr2 = %p, *ptr2 = %d, &ptr2 = %p\n", ptr2, *ptr2, &ptr2);
+
+	--ptr1;		//恢复为初始值
+	++ptr2;		//恢复为初始值
+	printf("\npointers reset to original values:\n");
+	printf("ptr1 = %p, ptr2 = %p\n", ptr1, ptr2);
+
+//一个指针减去另一个指针
+	printf("\nsubtracting one pointer form another:\n");
+	printf("ptr2 = %p, ptr1 = %p, ptr2 - ptr1 = %d\n", ptr2, ptr1, ptr2 - ptr1);
+
+	//一个指针减去一个整数
+	printf("\nsubtracting an int from a pointer:\n");
+	printf("ptr3 = %p, ptr3 - 2 = %p\n", ptr3, ptr3 - 2);
+
 	return 0;
-}
 
+}
