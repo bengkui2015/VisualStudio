@@ -427,56 +427,100 @@
 //}
 
 /*使用枚举值*/
+//#include<stdio.h>
+//#include<string.h>
+//#include<stdbool.h>
+//
+//enum spectrum {red, orange, yellow, green, blue, violet};
+//const char * colors[6] = { "red", "orange", "yellow", "gerrn", "blue", "violet" };
+//
+//#define LEN 30
+//
+//int main(void)
+//{
+//	char choice[LEN];
+//	enum spectrum color;
+//	bool color_is_found = false;
+//
+//	puts("Enter a color (empty line to quit):");
+//	while (gets_s(choice,LEN) != NULL && choice[0] != '\0')
+//	{
+//		for (color = red; color <= violet; color++)
+//			if (strcmp(choice, colors[color]) == 0)
+//			{
+//				color_is_found = true;
+//				break;
+//			}
+//
+//		if (color_is_found)
+//			switch (color)
+//			{
+//			case red:puts("Roses are red.");
+//				break;
+//			case orange:puts("Poppies are orange");
+//				break;
+//			case yellow:puts("Sunflows are yellow.");
+//				break;
+//			case green:puts("Grass are green");
+//				break;
+//			case blue:puts("Bluebells are blue.");
+//				break;
+//			case violet:puts("Violets are violet");
+//				break;
+//
+//			}
+//		else
+//			printf("I don't know about the color %s.\n", choice);
+//		color_is_found = false;
+//		puts("Next color, please(empty line to quie):");
+//
+//	}
+//	puts("Goodbye");
+//
+//	return 0;
+//
+//}
+
+/*使用位运算显示二进制数*/
 #include<stdio.h>
-#include<string.h>
-#include<stdbool.h>
-
-enum spectrum {red, orange, yellow, green, blue, violet};
-const char * colors[] = { "red", "orange", "yellow", "gerrn", "blue", "violet" };
-
-#define LEN 30
-
+char * itobs(int, char *);
+void show_bstr(const char *);
 int main(void)
 {
-	char choice[LEN];
-	enum spectrum color;
-	bool color_is_found = false;
+	char bin_str[8 * sizeof(int) + 1];
+	int number;
 
-	puts("Enter a color (empty line to quit):");
-	while (gets(choice) != NULL && choice[0] != '\0')
+	puts("Enter integers and see them in binary.");
+	puts("Non-number input terminates program.");
+	while (scanf_s("%d", &number) == 1)
 	{
-		for (color = red; color <= violet; color++)
-			if (strcmp(choice, colors[color]) == 0)
-			{
-				color_is_found = true;
-				break;
-			}
-
-		if (color_is_found)
-			switch (color)
-			{
-			case red:puts("Roses are red.");
-				break;
-			case orange:puts("Poppies are orange");
-				break;
-			case yellow:puts("Sunflows are yellow.");
-				break;
-			case green:puts("Grass are green");
-				break;
-			case blue:puts("Bluebells are blue.");
-				break;
-			case violet:puts("Violets are violet");
-				break;
-
-			}
-		else
-			printf("I don't know about the color %s.\n", choice);
-		color_is_found = false;
-		puts("Next color, please(empty line to quie):");
-
+		itobs(number, bin_str);
+		printf("%d is", number);
+		show_bstr(bin_str);
+		putchar('\n');
 	}
-	puts("Goodbye");
-
+	puts("Bye!");
+	
 	return 0;
+}
 
+char * itobs(int n, char * ps)
+{
+	int i;
+	static int size = 8 * sizeof(int);
+	for (i = size - 1;i >= 0; i--, n >>= 1)
+		ps[i] = (01 & n) + '0';
+	ps[size] = '\0';
+	return 0;
+}
+
+void show_bstr(const char * str)
+{
+	int i = 0;
+	while (str[i])
+	{
+		putchar(str[i]);
+		if (++i % 4 == 0 && str[i])
+			putchar(' ');
+	}
 }
