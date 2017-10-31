@@ -482,45 +482,78 @@
 //}
 
 /*使用位运算显示二进制数*/
+//#include<stdio.h>
+//char * itobs(int, char *);
+//void show_bstr(const char *);
+//int main(void)
+//{
+//	char bin_str[8 * sizeof(int) + 1];
+//	int number;
+//
+//	puts("Enter integers and see them in binary.");
+//	puts("Non-number input terminates program.");
+//	while (scanf_s("%d", &number) == 1)
+//	{
+//		itobs(number, bin_str);
+//		printf("%d is", number);
+//		show_bstr(bin_str);
+//		putchar('\n');
+//	}
+//	puts("Bye!");
+//	
+//	return 0;
+//}
+//
+//char * itobs(int n, char * ps)
+//{
+//	int i;
+//	static int size = 8 * sizeof(int);
+//	for (i = size - 1;i >= 0; i--, n >>= 1)
+//		ps[i] = (01 & n) + '0';
+//	ps[size] = '\0';
+//	return 0;
+//}
+//
+//void show_bstr(const char * str)
+//{
+//	int i = 0;
+//	while (str[i])
+//	{
+//		putchar(str[i]);
+//		if (++i % 4 == 0 && str[i])
+//			putchar(' ');
+//	}
+//}
+
 #include<stdio.h>
-char * itobs(int, char *);
-void show_bstr(const char *);
-int main(void)
+union save
 {
-	char bin_str[8 * sizeof(int) + 1];
-	int number;
+	int data;
+	char d[4];
+};
 
-	puts("Enter integers and see them in binary.");
-	puts("Non-number input terminates program.");
-	while (scanf_s("%d", &number) == 1)
+void main(void)
+{
+	union save s;
+	union save ss;
+	union save sss;
+	s.d[0] = 1;
+	s.d[1] = 2;
+	ss.d[0] = 3;
+	ss.d[1] = 4;
+	sss.d[0] = 5;
+	sss.d[1] = 6;
+	sss.d[3] = 7;
+	printf("%d,%d,%d,%d,%d,%d,%d", s.d[0], s.d[1], ss.d[0], ss.d[1],sss.d[0],sss.d[1],sss.d[3]);
+	int CH4_debug_two=10, CH4_set_zero=0, CH4_set_two=2;
+	if ( CH4_debug_two <= CH4_set_zero)
 	{
-		itobs(number, bin_str);
-		printf("%d is", number);
-		show_bstr(bin_str);
-		putchar('\n');
+		CH4_debug_two = CH4_set_zero;
 	}
-	puts("Bye!");
-	
+	int tradc = (CH4_debug_two - CH4_set_zero) * 200;
+	int adc_result = (unsigned int)(tradc / (unsigned long)(CH4_set_two - CH4_set_zero));
+	adc_result += 400;
+	return adc_result;
 	return 0;
-}
-
-char * itobs(int n, char * ps)
-{
-	int i;
-	static int size = 8 * sizeof(int);
-	for (i = size - 1;i >= 0; i--, n >>= 1)
-		ps[i] = (01 & n) + '0';
-	ps[size] = '\0';
-	return 0;
-}
-
-void show_bstr(const char * str)
-{
-	int i = 0;
-	while (str[i])
-	{
-		putchar(str[i]);
-		if (++i % 4 == 0 && str[i])
-			putchar(' ');
-	}
-}
+}    tradc = (adc_result - CH4_set_zero.data) * 200;
+adc_result = (tradc /(CH4_set_two.data - CH4_set_zero.data);
